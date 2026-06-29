@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xuyên Á Transport – Kết Nối Mọi Hành Trình</title>
+<link rel="icon" type="image/png" href="assets/logo-circle.png">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0A1D3D;
+  --blue:#1263B0;
+  --sky:#00AEEF;
+  --gray:#6A717C;
+  --light:#E6E8EB;
+  --white:#fff;
+  --font:'Barlow',sans-serif;
+  --font-cond:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:#fff;color:var(--navy);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  background:rgba(10,29,61,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,174,239,0.2);
+  padding:0 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:68px;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-mark{
+  height:38px;width:auto;display:block;
+}
+.nav-logo-mark img{height:100%;width:auto;display:block}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
+.nav-logo-text span:first-child{font-family:var(--font-cond);font-size:16px;font-weight:700;color:#fff;letter-spacing:1px}
+.nav-logo-text span:last-child{font-size:9px;color:var(--sky);letter-spacing:3px;font-weight:600}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.5px;transition:color .2s}
+.nav-links a:hover{color:var(--sky)}
+.nav-cta{
+  background:var(--sky);color:var(--navy);
+  border:none;border-radius:6px;
+  padding:9px 22px;font-size:13px;font-weight:700;
+  cursor:pointer;letter-spacing:0.5px;
+  transition:all .2s;font-family:var(--font);
+}
+.nav-cta:hover{background:#fff}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  background:var(--navy);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  padding:120px 40px 80px;
+}
+.hero-photo{
+  position:absolute;inset:0;
+  background-image:url('assets/mockup-staff-truck.jpg');
+  background-size:cover;background-position:center 30%;
+  opacity:0.4;
+}
+.hero-photo-fade{
+  position:absolute;inset:0;
+  background:linear-gradient(95deg, var(--navy) 0%, var(--navy) 42%, rgba(10,29,61,0.88) 58%, rgba(10,29,61,0.55) 78%, rgba(10,29,61,0.7) 100%);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(18,99,176,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 90% 80%, rgba(0,174,239,0.15) 0%, transparent 50%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,174,239,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,174,239,0.05) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+.hero-content{position:relative;z-index:1;max-width:680px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,174,239,0.12);
+  border:1px solid rgba(0,174,239,0.3);
+  border-radius:4px;padding:6px 14px;
+  font-size:11px;font-weight:600;color:var(--sky);
+  letter-spacing:2px;margin-bottom:28px;
+}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--sky);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{
+  font-family:var(--font-cond);
+  font-size:clamp(42px,6vw,72px);
+  font-weight:800;color:#fff;
+  line-height:1.05;letter-spacing:-1px;
+  margin-bottom:8px;
+}
+.hero h1 em{color:var(--sky);font-style:normal}
+.hero-tagline{
+  font-size:13px;font-weight:600;letter-spacing:4px;
+  color:rgba(255,255,255,0.4);text-transform:uppercase;
+  margin-bottom:24px;
+}
+.hero-desc{
+  font-size:16px;color:rgba(255,255,255,0.65);
+  line-height:1.75;max-width:520px;margin-bottom:40px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{
+  background:var(--sky);color:var(--navy);
+  border:none;border-radius:6px;
+  padding:14px 32px;font-size:14px;font-weight:700;
+  cursor:pointer;letter-spacing:0.5px;
+  transition:all .2s;font-family:var(--font);
+  text-decoration:none;display:inline-block;
+}
+.btn-primary:hover{background:#fff;transform:translateY(-1px)}
+.btn-outline{
+  background:transparent;color:#fff;
+  border:1.5px solid rgba(255,255,255,0.3);border-radius:6px;
+  padding:14px 32px;font-size:14px;font-weight:600;
+  cursor:pointer;letter-spacing:0.5px;
+  transition:all .2s;font-family:var(--font);
+  text-decoration:none;display:inline-block;
+}
+.btn-outline:hover{border-color:var(--sky);color:var(--sky)}
+.hero-stats{
+  position:absolute;right:40px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:2px;z-index:1;
+}
+.hero-stat{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-left:3px solid var(--sky);
+  border-radius:4px;padding:16px 24px;
+  min-width:180px;
+}
+.hero-stat-num{font-family:var(--font-cond);font-size:28px;font-weight:800;color:#fff}
+.hero-stat-label{font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;font-weight:500;margin-top:2px}
+
+/* TICKER */
+.ticker{
+  background:var(--sky);padding:10px 0;overflow:hidden;
+  display:flex;
+}
+.ticker-track{
+  display:flex;gap:0;white-space:nowrap;
+  animation:ticker 25s linear infinite;
+}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{
+  font-size:12px;font-weight:700;letter-spacing:2px;
+  color:var(--navy);padding:0 28px;text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;
+}
+.ticker-sep{color:rgba(10,29,61,0.4);font-size:16px}
+
+/* SECTION BASE */
+section{padding:96px 40px}
+.section-label{
+  font-size:11px;font-weight:700;letter-spacing:3px;
+  color:var(--sky);text-transform:uppercase;margin-bottom:12px;
+}
+.section-title{
+  font-family:var(--font-cond);font-size:clamp(28px,4vw,44px);
+  font-weight:800;color:var(--navy);line-height:1.1;
+  letter-spacing:-0.5px;margin-bottom:16px;
+}
+.section-desc{font-size:16px;color:var(--gray);line-height:1.75;max-width:560px}
+
+/* ABOUT */
+.about{background:#fff}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.about-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.about-stat{
+  background:var(--navy);border-radius:8px;padding:24px;
+  border-bottom:3px solid var(--sky);
+}
+.about-stat-num{font-family:var(--font-cond);font-size:36px;font-weight:800;color:#fff}
+.about-stat-unit{font-size:16px;color:var(--sky)}
+.about-stat-label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;font-weight:500}
+.about-visual{
+  background:var(--navy);border-radius:12px;padding:40px;
+  position:relative;overflow:hidden;min-height:400px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+}
+.about-visual-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0,174,239,0.2) 0%, transparent 60%);
+}
+.about-visual-title{
+  position:relative;z-index:1;
+  font-family:var(--font-cond);font-size:48px;font-weight:800;color:#fff;
+  line-height:1;letter-spacing:-2px;margin-bottom:8px;
+}
+.about-visual-title em{color:var(--sky);font-style:normal;display:block}
+.about-visual-sub{position:relative;z-index:1;font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:2px;font-weight:600}
+.about-logo-lines{
+  position:absolute;top:40px;right:40px;z-index:1;
+  display:flex;flex-direction:column;gap:6px;align-items:flex-end;
+}
+.about-logo-line{height:3px;background:var(--sky);border-radius:2px}
+
+/* VISION */
+.vision{background:#f7f9fc}
+.vision-inner{max-width:1200px;margin:0 auto}
+.vision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.vision-card{
+  background:#fff;border-radius:10px;padding:36px 32px;
+  border:1px solid rgba(10,29,61,0.08);
+  border-top:4px solid var(--sky);
+  transition:all .3s;
+}
+.vision-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(10,29,61,0.1)}
+.vision-card-icon{
+  width:48px;height:48px;border-radius:8px;
+  background:rgba(0,174,239,0.1);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;font-size:22px;
+}
+.vision-card-label{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--sky);margin-bottom:8px}
+.vision-card h3{font-family:var(--font-cond);font-size:22px;font-weight:700;color:var(--navy);margin-bottom:12px}
+.vision-card p{font-size:14px;color:var(--gray);line-height:1.75}
+
+/* CORE VALUES */
+.values{background:var(--navy);padding:96px 40px}
+.values-inner{max-width:1200px;margin:0 auto}
+.values .section-title{color:#fff}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);margin-top:56px;border-radius:10px;overflow:hidden}
+.value-item{background:var(--navy);padding:36px 28px;transition:background .3s}
+.value-item:hover{background:rgba(0,174,239,0.08)}
+.value-num{font-family:var(--font-cond);font-size:48px;font-weight:800;color:rgba(0,174,239,0.15);line-height:1;margin-bottom:16px}
+.value-title{font-family:var(--font-cond);font-size:20px;font-weight:700;color:#fff;margin-bottom:10px}
+.value-line{width:32px;height:3px;background:var(--sky);border-radius:2px;margin-bottom:14px}
+.value-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7}
+
+/* SERVICES */
+.services{background:#fff}
+.services-inner{max-width:1200px;margin:0 auto}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.service-card{
+  background:#f7f9fc;border-radius:10px;padding:32px;
+  border:1px solid rgba(10,29,61,0.06);
+  transition:all .3s;cursor:default;
+}
+.service-card:hover{background:var(--navy);border-color:var(--navy)}
+.service-card:hover .service-title{color:#fff}
+.service-card:hover .service-desc{color:rgba(255,255,255,0.6)}
+.service-card:hover .service-icon{background:rgba(0,174,239,0.15)}
+.service-card:hover .service-tag{background:rgba(0,174,239,0.2);color:var(--sky)}
+.service-icon{
+  width:52px;height:52px;border-radius:10px;
+  background:rgba(18,99,176,0.1);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;font-size:24px;transition:background .3s;
+}
+.service-title{font-family:var(--font-cond);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:10px;transition:color .3s}
+.service-desc{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:20px;transition:color .3s}
+.service-tag{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;
+  background:rgba(0,174,239,0.1);color:var(--blue);
+  padding:4px 10px;border-radius:4px;transition:all .3s;
+}
+
+/* NETWORK */
+.network{background:#f7f9fc}
+.network-inner{max-width:1200px;margin:0 auto}
+.network-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:56px}
+.network-map{
+  background:var(--navy);border-radius:12px;padding:40px;
+  position:relative;overflow:hidden;
+}
+.map-svg{width:100%;max-width:340px;margin:0 auto;display:block}
+.network-hubs{display:flex;flex-direction:column;gap:16px;margin-top:32px}
+.hub{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:8px;padding:16px 20px;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.hub-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--sky);flex-shrink:0;margin-top:4px;
+}
+.hub-name{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px}
+.hub-cities{font-size:12px;color:rgba(255,255,255,0.5)}
+.route-badge{
+  background:rgba(0,174,239,0.12);border:1px solid rgba(0,174,239,0.3);
+  border-radius:6px;padding:12px 16px;margin-top:16px;
+  font-size:12px;color:var(--sky);font-weight:600;letter-spacing:0.5px;
+}
+.network-right{display:flex;flex-direction:column;gap:20px;padding-top:12px}
+.network-item{
+  background:#fff;border-radius:8px;padding:24px;
+  border:1px solid rgba(10,29,61,0.07);
+  display:flex;gap:20px;align-items:flex-start;
+}
+.network-item-icon{
+  width:44px;height:44px;border-radius:8px;flex-shrink:0;
+  background:rgba(0,174,239,0.1);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.network-item h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.network-item p{font-size:13px;color:var(--gray);line-height:1.6}
+
+/* COMMITMENTS */
+.commitments{background:var(--navy)}
+.commitments-inner{max-width:1200px;margin:0 auto}
+.commitments .section-title{color:#fff}
+.commit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px}
+.commit-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:10px;padding:32px 24px;
+  text-align:center;
+}
+.commit-num{
+  font-family:var(--font-cond);font-size:40px;font-weight:800;
+  color:var(--sky);line-height:1;margin-bottom:6px;
+}
+.commit-label{font-size:12px;color:#fff;font-weight:600;margin-bottom:10px}
+.commit-desc{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6}
+
+/* LEADERSHIP */
+.leadership{background:#fff}
+.leadership-inner{max-width:1200px;margin:0 auto}
+.leader-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.leader-card{
+  background:#f7f9fc;border-radius:10px;padding:32px;
+  border:1px solid rgba(10,29,61,0.07);
+}
+.leader-avatar{
+  width:56px;height:56px;border-radius:10px;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-cond);font-size:20px;font-weight:800;color:#fff;
+  margin-bottom:20px;letter-spacing:1px;
+}
+.leader-role{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--sky);margin-bottom:6px}
+.leader-name{font-family:var(--font-cond);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:12px}
+.leader-exp{font-size:13px;color:var(--gray);line-height:1.7}
+.leader-years{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(0,174,239,0.1);border-radius:4px;
+  padding:4px 10px;margin-top:16px;
+  font-size:11px;font-weight:700;color:var(--blue);
+}
+
+/* REGISTRATION */
+.registration{background:#f7f9fc}
+.registration-inner{max-width:1200px;margin:0 auto}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:56px}
+.reg-card{
+  background:#fff;border-radius:10px;padding:36px;
+  border:1px solid rgba(10,29,61,0.08);
+}
+.reg-card-header{
+  display:flex;align-items:center;gap:16px;
+  padding-bottom:20px;border-bottom:1px solid rgba(10,29,61,0.07);margin-bottom:24px;
+}
+.reg-icon{
+  width:48px;height:48px;border-radius:8px;
+  background:rgba(0,174,239,0.1);
+  display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
+}
+.reg-card-title{font-family:var(--font-cond);font-size:18px;font-weight:700;color:var(--navy)}
+.reg-card-sub{font-size:12px;color:var(--gray);margin-top:2px}
+.reg-rows{display:flex;flex-direction:column;gap:14px}
+.reg-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.reg-key{font-size:12px;color:var(--gray);font-weight:500;min-width:120px;flex-shrink:0}
+.reg-val{font-size:13px;color:var(--navy);font-weight:600;text-align:right}
+.reg-status{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(16,185,129,0.1);color:#059669;
+  padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;
+}
+.reg-status-dot{width:6px;height:6px;border-radius:50%;background:#10b981}
+
+/* CONTACT */
+.contact{background:var(--navy);padding:96px 40px}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact .section-title{color:#fff}
+.contact .section-desc{color:rgba(255,255,255,0.6)}
+.contact-info{display:flex;flex-direction:column;gap:20px;margin-top:36px}
+.contact-item{
+  display:flex;align-items:flex-start;gap:16px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:8px;padding:20px;
+}
+.contact-item-icon{
+  width:40px;height:40px;border-radius:8px;flex-shrink:0;
+  background:rgba(0,174,239,0.15);
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.contact-item-label{font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;letter-spacing:1px;margin-bottom:4px}
+.contact-item-val{font-size:14px;color:#fff;font-weight:600}
+.contact-form{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:36px}
+.contact-form h3{font-family:var(--font-cond);font-size:22px;font-weight:700;color:#fff;margin-bottom:24px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:6px;letter-spacing:0.5px}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);border-radius:6px;
+  padding:11px 14px;color:#fff;font-size:14px;font-family:var(--font);
+  outline:none;transition:border-color .2s;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--sky)}
+.form-group select option{background:var(--navy);color:#fff}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{
+  width:100%;background:var(--sky);color:var(--navy);
+  border:none;border-radius:6px;padding:13px;
+  font-size:14px;font-weight:700;cursor:pointer;
+  font-family:var(--font);letter-spacing:0.5px;
+  transition:all .2s;margin-top:8px;
+}
+.form-submit:hover{background:#fff}
+
+/* FOOTER */
+footer{
+  background:#060f1e;padding:48px 40px 28px;
+  border-top:1px solid rgba(0,174,239,0.15);
+}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;margin-top:14px;max-width:280px}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.4);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;transition:color .2s}
+.footer-col ul li a:hover{color:var(--sky)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3)}
+.footer-sky{font-size:12px;color:var(--sky);font-weight:600}
+
+/* SCROLL ANIMATION */
+.fade-up{opacity:0;transform:translateY(32px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero{padding:100px 20px 60px;flex-direction:column}
+  .hero-stats{position:static;transform:none;flex-direction:row;flex-wrap:wrap;margin-top:48px;gap:12px}
+  .hero-stat{min-width:140px}
+  section{padding:64px 20px}
+  .about-inner,.network-grid,.contact-inner,.reg-grid{grid-template-columns:1fr}
+  .vision-grid,.values-grid,.commit-grid,.leader-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .vision-grid,.values-grid,.commit-grid,.leader-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark"><img src="assets/logo-icon.png" alt="Xuyên Á Transport"></div>
+    <div class="nav-logo-text">
+      <span>XUYÊN Á</span>
+      <span>TRANSPORT</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Giới thiệu</a></li>
+    <li><a href="#vision">Triết lý</a></li>
+    <li><a href="#services">Dịch vụ</a></li>
+    <li><a href="#network">Mạng lưới</a></li>
+    <li><a href="#registration">Pháp lý</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Liên hệ ngay</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-photo-fade"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      GLOBAL LOGISTICS · KẾT NỐI · UY TÍN · HIỆU QUẢ
+    </div>
+    <p class="hero-tagline">Kết nối mọi hành trình</p>
+    <h1>XUYÊN Á<br><em>TRANSPORT</em></h1>
+    <p class="hero-desc">Giải pháp vận tải và logistics tích hợp tại Việt Nam — kết hợp đội xe sở hữu, mạng lưới đối tác rộng khắp và nền tảng công nghệ quản trị hiện đại.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Nhận báo giá ngay</a>
+      <a href="#services" class="btn-outline">Xem dịch vụ</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">10 tỷ</div>
+      <div class="hero-stat-label">VỐN ĐIỀU LỆ</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">90+</div>
+      <div class="hero-stat-label">NĂM KINH NGHIỆM</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3 Miền</div>
+      <div class="hero-stat-label">PHỦ SÓNG TOÀN QUỐC</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">98%+</div>
+      <div class="hero-stat-label">GIAO HÀNG ĐÚNG HẠN</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">🌏 Kết Nối Toàn Cầu <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">🛡️ Uy Tín & An Toàn <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">🚛 Vận Hành Chuyên Nghiệp <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">📈 Phát Triển Bền Vững <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">⚡ Công Nghệ Hiện Đại <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">🌏 Kết Nối Toàn Cầu <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">🛡️ Uy Tín & An Toàn <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">🚛 Vận Hành Chuyên Nghiệp <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">📈 Phát Triển Bền Vững <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">⚡ Công Nghệ Hiện Đại <span class="ticker-sep">·</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="fade-up">
+      <p class="section-label">Về chúng tôi</p>
+      <h2 class="section-title">Nền Tảng Vững Chắc,<br>Sẵn Sàng Vươn Xa</h2>
+      <p class="section-desc">Xuyên Á Transport là doanh nghiệp cung cấp giải pháp vận tải và logistics tích hợp tại Việt Nam — kết hợp đội xe sở hữu, mạng lưới đối tác rộng khắp và nền tảng công nghệ quản trị hiện đại. Trụ sở chính tại Hà Nội, phủ sóng toàn quốc Bắc – Trung – Nam.</p>
+      <div class="about-stats-grid">
+        <div class="about-stat">
+          <div class="about-stat-num">2026<span class="about-stat-unit"></span></div>
+          <div class="about-stat-label">Năm thành lập</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">10<span class="about-stat-unit"> tỷ</span></div>
+          <div class="about-stat-label">Vốn điều lệ</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">90<span class="about-stat-unit">+</span></div>
+          <div class="about-stat-label">Năm KN cộng gộp đội ngũ</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">3<span class="about-stat-unit"> miền</span></div>
+          <div class="about-stat-label">Phủ sóng toàn quốc</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual fade-up">
+      <div class="about-visual-bg"></div>
+      <img src="assets/logo-mono.png" alt="Xuyên Á Transport" style="position:relative;z-index:1;width:100%;max-width:380px;margin:0 auto 24px;filter:brightness(0) invert(1);opacity:0.95">
+      <div class="about-visual-sub" style="position:relative;z-index:1;text-align:center">KẾT NỐI NGUỒN LỰC · TỐI ƯU VẬN HÀNH · ĐỒNG HÀNH PHÁT TRIỂN</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION / MISSION / VALUES -->
+<section class="vision" id="vision">
+  <div class="vision-inner">
+    <div class="fade-up" style="text-align:center;max-width:600px;margin:0 auto">
+      <p class="section-label">Triết lý kinh doanh</p>
+      <h2 class="section-title">Tầm Nhìn – Sứ Mệnh –<br>Giá Trị Cốt Lõi</h2>
+    </div>
+    <div class="vision-grid">
+      <div class="vision-card fade-up">
+        <div class="vision-card-icon">🎯</div>
+        <p class="vision-card-label">Tầm nhìn</p>
+        <h3>Logistics Thông Minh</h3>
+        <p>Trở thành doanh nghiệp logistics hiện đại, ứng dụng công nghệ và dữ liệu để kết nối hiệu quả chuỗi cung ứng, đồng hành cùng sự phát triển của khách hàng và đối tác.</p>
+      </div>
+      <div class="vision-card fade-up" style="transition-delay:.1s">
+        <div class="vision-card-icon">🚀</div>
+        <p class="vision-card-label">Sứ mệnh</p>
+        <h3>Tối Ưu Chuỗi Cung Ứng</h3>
+        <p>Cung cấp giải pháp vận tải và logistics tích hợp, tối ưu chi phí và nâng cao hiệu quả chuỗi cung ứng thông qua công nghệ và đội ngũ chuyên nghiệp.</p>
+      </div>
+      <div class="vision-card fade-up" style="transition-delay:.2s">
+        <div class="vision-card-icon">💎</div>
+        <p class="vision-card-label">Giá trị cốt lõi</p>
+        <h3>4 Trụ Cột Vững Chắc</h3>
+        <p><strong>Chính trực</strong> – Minh bạch trong mọi cam kết.<br><strong>Chuyên nghiệp</strong> – Chuẩn mực quốc tế.<br><strong>Đổi mới</strong> – Ứng dụng công nghệ tiên tiến.<br><strong>Đồng hành</strong> – Phát triển bền vững cùng khách hàng.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE VALUES DETAIL -->
+<section class="values">
+  <div class="values-inner">
+    <div class="fade-up" style="text-align:center">
+      <p class="section-label" style="color:rgba(0,174,239,0.8)">Giá trị cốt lõi</p>
+      <h2 class="section-title">4 Trụ Cột Định Hình<br>Xuyên Á Transport</h2>
+    </div>
+    <div class="values-grid fade-up" style="transition-delay:.1s">
+      <div class="value-item">
+        <div class="value-num">01</div>
+        <div class="value-title">Chính Trực</div>
+        <div class="value-line"></div>
+        <div class="value-desc">Cam kết – Trách nhiệm – Minh bạch trong từng hợp đồng và giao dịch. Không thỏa hiệp với chất lượng và đạo đức kinh doanh.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">02</div>
+        <div class="value-title">Chuyên Nghiệp</div>
+        <div class="value-line"></div>
+        <div class="value-desc">Đội ngũ được đào tạo bài bản, quy trình vận hành theo chuẩn mực quốc tế DHL, Maersk. Mỗi hành trình đều có quy trình kiểm soát chặt chẽ.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">03</div>
+        <div class="value-title">Đổi Mới</div>
+        <div class="value-line"></div>
+        <div class="value-desc">Không ngừng ứng dụng công nghệ TMS, GPS, AI để tối ưu vận hành. Lộ trình hướng tới Smart Logistics Platform vào 2030.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">04</div>
+        <div class="value-title">Đồng Hành</div>
+        <div class="value-line"></div>
+        <div class="value-desc">Không chỉ là nhà cung cấp dịch vụ — là đối tác chiến lược đồng hành lâu dài, tư vấn tối ưu chuỗi cung ứng cho từng doanh nghiệp.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="fade-up" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px">
+      <div>
+        <p class="section-label">Dịch vụ & giải pháp</p>
+        <h2 class="section-title">Giải Pháp Toàn Diện<br>Cho Kỷ Nguyên Số</h2>
+      </div>
+      <p class="section-desc" style="max-width:360px">Từ vận tải đường bộ đến logistics tích hợp — chúng tôi cung cấp giải pháp trọn gói cho doanh nghiệp.</p>
+    </div>
+    <div class="fade-up" style="margin-top:40px;border-radius:12px;overflow:hidden;position:relative;height:340px">
+      <img src="assets/mockup-container.jpg" alt="Container Xuyên Á Transport" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 50%, rgba(10,29,61,0.85) 100%)"></div>
+      <div style="position:absolute;bottom:28px;left:32px;right:32px;color:#fff">
+        <p style="font-size:11px;font-weight:700;letter-spacing:2px;color:#00AEEF;margin-bottom:6px">VẬN TẢI ĐƯỜNG BIỂN & ĐA PHƯƠNG THỨC</p>
+        <p style="font-size:18px;font-weight:600;max-width:520px;line-height:1.4">Đồng bộ nhận diện thương hiệu trên toàn bộ phương tiện và container vận chuyển.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">🚛</div>
+        <div class="service-title">Vận Tải Đường Bộ</div>
+        <div class="service-desc">FTL/LTL toàn quốc — đội xe sở hữu kết hợp mạng lưới đối tác, đảm bảo giao hàng đúng hạn 98%+.</div>
+        <span class="service-tag">FTL · LTL · TOÀN QUỐC</span>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.05s">
+        <div class="service-icon">🔗</div>
+        <div class="service-title">Logistics Tích Hợp</div>
+        <div class="service-desc">Quản lý chuỗi cung ứng end-to-end — từ thu mua, lưu kho đến phân phối cuối cùng cho khách hàng.</div>
+        <span class="service-tag">END-TO-END · SUPPLY CHAIN</span>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.1s">
+        <div class="service-icon">💻</div>
+        <div class="service-title">Công Nghệ Vận Tải</div>
+        <div class="service-desc">TMS, GPS tracking thời gian thực, báo cáo tự động và tích hợp API với hệ thống ERP/WMS của khách hàng.</div>
+        <span class="service-tag">TMS · GPS · AI · API</span>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.15s;padding:0;overflow:hidden;background:var(--navy)">
+        <div style="height:140px;position:relative;overflow:hidden">
+          <img src="assets/mockup-warehouse.jpg" alt="Kho bãi Xuyên Á Transport" style="width:100%;height:100%;object-fit:cover;object-position:center 70%;display:block">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,29,61,0.1) 0%, rgba(10,29,61,0.9) 100%)"></div>
+        </div>
+        <div style="padding:24px 32px 32px">
+          <div class="service-title" style="color:#fff">Kho Bãi & Phân Phối</div>
+          <div class="service-desc" style="color:rgba(255,255,255,0.6)">Giải pháp lưu kho và phân phối linh hoạt theo yêu cầu, hệ thống kho chiến lược tại 3 miền.</div>
+          <span class="service-tag" style="background:rgba(0,174,239,0.2);color:var(--sky)">3PL · WMS · PHÂN PHỐI</span>
+        </div>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.2s">
+        <div class="service-icon">📊</div>
+        <div class="service-title">Tư Vấn Logistics</div>
+        <div class="service-desc">Phân tích và tối ưu hóa chuỗi cung ứng cho doanh nghiệp — giảm 15–25% chi phí logistics.</div>
+        <span class="service-tag">CONSULTING · TĂNG HIỆU QUẢ</span>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:.25s">
+        <div class="service-icon">🤖</div>
+        <div class="service-title">AI & Smart Logistics</div>
+        <div class="service-desc">Tối ưu tuyến đường tự động, dự báo nhu cầu, phân bổ xe thông minh — lộ trình hướng tới Smart Platform 2030.</div>
+        <span class="service-tag">AI · AUTOMATION · 2030</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section class="network" id="network">
+  <div class="network-inner">
+    <div class="fade-up">
+      <p class="section-label">Mạng lưới vận hành</p>
+      <h2 class="section-title">Phủ Sóng Toàn Quốc,<br>Kết Nối Tức Thì</h2>
+    </div>
+    <div class="network-grid">
+      <div class="network-map fade-up">
+        <div style="position:relative;z-index:1">
+          <svg class="map-svg" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M120 20 L140 40 L145 80 L130 120 L140 160 L130 200 L120 240 L100 280 L90 320 L80 360 L70 380 L60 360 L50 320 L60 280 L70 240 L60 200 L70 160 L80 120 L70 80 L80 40 Z" fill="rgba(18,99,176,0.2)" stroke="rgba(0,174,239,0.5)" stroke-width="1.5"/>
+            <circle cx="105" cy="60" r="8" fill="var(--sky)" opacity="0.9"/>
+            <text x="118" y="64" fill="white" font-size="9" font-weight="700" font-family="Barlow">Hà Nội</text>
+            <circle cx="90" cy="200" r="6" fill="rgba(0,174,239,0.7)"/>
+            <text x="100" y="204" fill="rgba(255,255,255,0.7)" font-size="8" font-family="Barlow">Đà Nẵng</text>
+            <circle cx="75" cy="320" r="8" fill="var(--sky)" opacity="0.9"/>
+            <text x="88" y="324" fill="white" font-size="9" font-weight="700" font-family="Barlow">TP.HCM</text>
+            <line x1="105" y1="68" x2="90" y2="194" stroke="rgba(0,174,239,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <line x1="90" y1="206" x2="75" y2="312" stroke="rgba(0,174,239,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          </svg>
+          <div class="network-hubs">
+            <div class="hub">
+              <div class="hub-dot"></div>
+              <div>
+                <div class="hub-name">Miền Bắc — Hub Hà Nội</div>
+                <div class="hub-cities">Hải Phòng · Quảng Ninh · Bắc Ninh · Hải Dương</div>
+              </div>
+            </div>
+            <div class="hub">
+              <div class="hub-dot" style="opacity:.7"></div>
+              <div>
+                <div class="hub-name">Miền Trung — Hub Đà Nẵng</div>
+                <div class="hub-cities">Huế · Quảng Nam · Quảng Ngãi</div>
+              </div>
+            </div>
+            <div class="hub">
+              <div class="hub-dot"></div>
+              <div>
+                <div class="hub-name">Miền Nam — Hub TP.HCM</div>
+                <div class="hub-cities">Bình Dương · Đồng Nai · Long An</div>
+              </div>
+            </div>
+          </div>
+          <div class="route-badge">⚡ Tuyến liên miền: Hà Nội ↔ Đà Nẵng ↔ TP.HCM — Tần suất hàng ngày</div>
+        </div>
+      </div>
+      <div class="network-right fade-up" style="transition-delay:.15s">
+        <div class="network-item">
+          <div class="network-item-icon">🚛</div>
+          <div>
+            <h4>Đội Xe Sở Hữu</h4>
+            <p>Kiểm soát chất lượng tuyệt đối, không phụ thuộc bên thứ ba. Xe hiện đại, bảo trì định kỳ, định vị GPS 24/7.</p>
+          </div>
+        </div>
+        <div class="network-item">
+          <div class="network-item-icon">🤝</div>
+          <div>
+            <h4>Mạng Lưới Đối Tác</h4>
+            <p>Hệ thống đối tác vận tải, kho bãi, công nghệ và tài chính phủ sóng toàn quốc. Linh hoạt năng lực theo nhu cầu.</p>
+          </div>
+        </div>
+        <div class="network-item">
+          <div class="network-item-icon">📡</div>
+          <div>
+            <h4>Tracking Thời Gian Thực</h4>
+            <p>GPS giám sát 24/7, dashboard KPI tự động, cảnh báo tức thì khi có sự cố. Khách hàng theo dõi lô hàng mọi lúc.</p>
+          </div>
+        </div>
+        <div class="network-item">
+          <div class="network-item-icon">🏭</div>
+          <div>
+            <h4>Kho Chiến Lược 3 Miền</h4>
+            <p>Hệ thống kho bãi đặt tại vị trí chiến lược tại Hà Nội, Đà Nẵng và TP.HCM, tích hợp WMS quản lý hiện đại.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITMENTS -->
+<section class="commitments">
+  <div class="commitments-inner">
+    <div class="fade-up" style="text-align:center">
+      <p class="section-label" style="color:rgba(0,174,239,0.8)">Cam kết chất lượng</p>
+      <h2 class="section-title">Chúng Tôi Cam Kết<br>Từng Hành Trình</h2>
+    </div>
+    <div class="commit-grid fade-up" style="transition-delay:.1s">
+      <div class="commit-card">
+        <div class="commit-num">98%+</div>
+        <div class="commit-label">Giao hàng đúng hạn</div>
+        <div class="commit-desc">SLA rõ ràng, bồi thường nếu vi phạm cam kết thời gian</div>
+      </div>
+      <div class="commit-card">
+        <div class="commit-num">24/7</div>
+        <div class="commit-label">Hỗ trợ vận hành</div>
+        <div class="commit-desc">Đội ngũ trực chiến liên tục, phản hồi sự cố dưới 2 giờ</div>
+      </div>
+      <div class="commit-card">
+        <div class="commit-num">100%</div>
+        <div class="commit-label">Bảo hiểm hàng hóa</div>
+        <div class="commit-desc">Bảo hiểm toàn trình, quy trình xử lý bồi thường minh bạch</div>
+      </div>
+      <div class="commit-card">
+        <div class="commit-num">&lt;2h</div>
+        <div class="commit-label">Phản hồi sự cố</div>
+        <div class="commit-desc">Thời gian xử lý và phản hồi sự cố cam kết dưới 2 giờ</div>
+      </div>
+    </div>
+    <div class="fade-up" style="margin-top:32px;border-radius:12px;overflow:hidden;position:relative;height:280px;transition-delay:.15s">
+      <img src="assets/mockup-boxes.jpg" alt="Đóng gói hàng hóa Xuyên Á Transport" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,29,61,0.92) 0%, rgba(10,29,61,0.55) 45%, transparent 75%)"></div>
+      <div style="position:absolute;top:0;bottom:0;left:0;display:flex;flex-direction:column;justify-content:center;padding:0 40px;max-width:420px">
+        <p style="font-size:11px;font-weight:700;letter-spacing:2px;color:#00AEEF;margin-bottom:8px">ĐÓNG GÓI & XỬ LÝ AN TOÀN</p>
+        <p style="font-size:20px;font-weight:600;color:#fff;line-height:1.4">Mọi lô hàng đều được niêm phong và nhận diện thương hiệu rõ ràng trong suốt hành trình.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership" id="leadership">
+  <div class="leadership-inner">
+    <div class="fade-up" style="text-align:center;max-width:560px;margin:0 auto">
+      <p class="section-label">Ban lãnh đạo</p>
+      <h2 class="section-title">Dẫn Dắt Bởi Những<br>Chuyên Gia Thực Chiến</h2>
+    </div>
+    <div class="leader-grid">
+      <div class="leader-card fade-up">
+        <div class="leader-avatar">NĐT</div>
+        <p class="leader-role">Chủ tịch HĐQT</p>
+        <h3 class="leader-name">Nguyễn Đắc Thắng</h3>
+        <p class="leader-exp">25+ năm kinh nghiệm vận tải và logistics. Từng lãnh đạo các doanh nghiệp logistics lớn tại Việt Nam. Tầm nhìn xây dựng hệ sinh thái logistics thông minh.</p>
+        <span class="leader-years">⭐ 25+ năm kinh nghiệm</span>
+      </div>
+      <div class="leader-card fade-up" style="transition-delay:.1s">
+        <div class="leader-avatar">TGĐ</div>
+        <p class="leader-role">Tổng Giám Đốc</p>
+        <h3 class="leader-name">Ban Điều Hành</h3>
+        <p class="leader-exp">Chuyên gia quản trị chuỗi cung ứng, kinh nghiệm làm việc với tập đoàn FDI và FMCG hàng đầu tại Việt Nam và khu vực.</p>
+        <span class="leader-years">⭐ 20+ năm kinh nghiệm</span>
+      </div>
+      <div class="leader-card fade-up" style="transition-delay:.2s">
+        <div class="leader-avatar">CTO</div>
+        <p class="leader-role">Giám Đốc Công Nghệ</p>
+        <h3 class="leader-name">Đội Ngũ Công Nghệ</h3>
+        <p class="leader-exp">Chuyên gia chuyển đổi số logistics, từng triển khai TMS/WMS quy mô lớn. Dẫn dắt lộ trình AI và Smart Logistics Platform đến 2030.</p>
+        <span class="leader-years">⭐ 15+ năm kinh nghiệm</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section class="registration" id="registration">
+  <div class="registration-inner">
+    <div class="fade-up">
+      <p class="section-label">Pháp lý & đăng ký</p>
+      <h2 class="section-title">Đầy Đủ Pháp Lý,<br>Hoạt Động Minh Bạch</h2>
+      <p class="section-desc">Xuyên Á Transport hoạt động đầy đủ theo các quy định pháp luật Việt Nam về đăng ký kinh doanh và kinh doanh vận tải.</p>
+    </div>
+    <div class="reg-grid">
+      <div class="reg-card fade-up">
+        <div class="reg-card-header">
+          <div class="reg-icon">🏢</div>
+          <div>
+            <div class="reg-card-title">Đăng Ký Kinh Doanh</div>
+            <div class="reg-card-sub">Giấy chứng nhận ĐKKD – Sở KH&ĐT Hà Nội</div>
+          </div>
+        </div>
+        <div class="reg-rows">
+          <div class="reg-row">
+            <span class="reg-key">Tên đầy đủ</span>
+            <span class="reg-val">Công ty Cổ phần Xuyên Á Transport</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Loại hình</span>
+            <span class="reg-val">Công ty Cổ phần</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Năm thành lập</span>
+            <span class="reg-val">2026</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Vốn điều lệ</span>
+            <span class="reg-val">10.000.000.000 VNĐ</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Trụ sở chính</span>
+            <span class="reg-val">Số 36 Thạch Bàn, Long Biên, Hà Nội</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Trạng thái</span>
+            <span class="reg-val"><span class="reg-status"><span class="reg-status-dot"></span>Đang hoạt động</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="reg-card fade-up" style="transition-delay:.1s">
+        <div class="reg-card-header">
+          <div class="reg-icon">🚛</div>
+          <div>
+            <div class="reg-card-title">Đăng Ký Vận Tải</div>
+            <div class="reg-card-sub">Giấy phép kinh doanh vận tải bằng xe ô tô</div>
+          </div>
+        </div>
+        <div class="reg-rows">
+          <div class="reg-row">
+            <span class="reg-key">Loại hình VT</span>
+            <span class="reg-val">Vận tải hàng hóa bằng xe ô tô</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Phạm vi</span>
+            <span class="reg-val">Toàn quốc (Bắc – Trung – Nam)</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Cơ quan cấp</span>
+            <span class="reg-val">Sở GTVT Hà Nội</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Loại xe</span>
+            <span class="reg-val">Xe tải, đầu kéo, xe container</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Bảo hiểm</span>
+            <span class="reg-val">Bảo hiểm hàng hóa toàn trình</span>
+          </div>
+          <div class="reg-row">
+            <span class="reg-key">Trạng thái</span>
+            <span class="reg-val"><span class="reg-status"><span class="reg-status-dot"></span>Đầy đủ &amp; hợp lệ</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="section-label">Liên hệ</p>
+      <h2 class="section-title">Kết Nối Với<br>Xuyên Á Transport</h2>
+      <p class="section-desc">Sẵn sàng đồng hành cùng doanh nghiệp của bạn. Liên hệ ngay để nhận tư vấn giải pháp logistics tối ưu.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">ĐỊA CHỈ</div>
+            <div class="contact-item-val">Số 36 Thạch Bàn, Phường Long Biên, Hà Nội</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">ĐIỆN THOẠI</div>
+            <div class="contact-item-val">0847 801 222</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div>
+            <div class="contact-item-label">EMAIL</div>
+            <div class="contact-item-val">XAT@vantaixuyena.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🌐</div>
+          <div>
+            <div class="contact-item-label">WEBSITE</div>
+            <div class="contact-item-val">www.vantaixuyena.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form fade-up">
+      <h3>Gửi yêu cầu tư vấn</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>HỌ VÀ TÊN</label>
+          <input type="text" placeholder="Nguyễn Văn A">
+        </div>
+        <div class="form-group">
+          <label>SỐ ĐIỆN THOẠI</label>
+          <input type="tel" placeholder="0912 345 678">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>EMAIL</label>
+        <input type="email" placeholder="email@company.com">
+      </div>
+      <div class="form-group">
+        <label>DOANH NGHIỆP / CÔNG TY</label>
+        <input type="text" placeholder="Tên công ty của bạn">
+      </div>
+      <div class="form-group">
+        <label>LOẠI DỊCH VỤ CẦN TƯ VẤN</label>
+        <select>
+          <option>Vận tải đường bộ (FTL/LTL)</option>
+          <option>Logistics tích hợp</option>
+          <option>Kho bãi & phân phối</option>
+          <option>Tư vấn tối ưu logistics</option>
+          <option>Khác</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>NỘI DUNG</label>
+        <textarea placeholder="Mô tả nhu cầu vận chuyển của bạn..."></textarea>
+      </div>
+      <button class="form-submit">GỬI YÊU CẦU TƯ VẤN →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#" style="display:inline-flex;margin-bottom:4px">
+          <div class="nav-logo-mark"><img src="assets/logo-icon.png" alt="Xuyên Á Transport"></div>
+          <div class="nav-logo-text" style="margin-left:10px">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:1px">XUYÊN Á</span>
+            <span style="font-size:9px;color:#00AEEF;letter-spacing:3px;font-weight:600">TRANSPORT</span>
+          </div>
+        </a>
+        <p>Kết nối Nguồn lực – Tối ưu Vận hành – Đồng hành Phát triển. Giải pháp logistics tích hợp hàng đầu Việt Nam.</p>
+      </div>
+      <div class="footer-col">
+        <h4>DỊCH VỤ</h4>
+        <ul>
+          <li><a href="#">Vận tải đường bộ</a></li>
+          <li><a href="#">Logistics tích hợp</a></li>
+          <li><a href="#">Kho bãi & phân phối</a></li>
+          <li><a href="#">Công nghệ vận tải</a></li>
+          <li><a href="#">Tư vấn logistics</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CÔNG TY</h4>
+        <ul>
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#vision">Triết lý</a></li>
+          <li><a href="#leadership">Ban lãnh đạo</a></li>
+          <li><a href="#network">Mạng lưới</a></li>
+          <li><a href="#registration">Pháp lý</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>LIÊN HỆ</h4>
+        <ul>
+          <li><a href="tel:0847801222">0847 801 222</a></li>
+          <li><a href="mailto:XAT@vantaixuyena.com">XAT@vantaixuyena.com</a></li>
+          <li><a href="#">vantaixuyena.com</a></li>
+          <li><a href="#">Fanpage: vantaixuyena</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Công ty Cổ phần Xuyên Á Transport. Bảo lưu mọi quyền.</p>
+      <span class="footer-sky">KẾT NỐI MỌI HÀNH TRÌNH</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+document.querySelector('.form-submit').addEventListener('click', function(){
+  this.textContent = '✅ ĐÃ GỬI! CHÚNG TÔI SẼ LIÊN HỆ SỚM';
+  this.style.background = '#10b981';
+  setTimeout(() => {
+    this.textContent = 'GỬI YÊU CẦU TƯ VẤN →';
+    this.style.background = '';
+  }, 3000);
+});
+</script>
+</body>
+</html>
